@@ -16,3 +16,17 @@ main {
   left: 50%;
   padding: 20px;
 }
+
+div.fill-screen {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+}
+
+img.make-it-fit {
+    max-width: 99%;
+    max-height: 99%;
+}
