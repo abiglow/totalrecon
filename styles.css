@@ -8,7 +8,7 @@ body {
 
 main {
   position: relative;
-  background: black;
+  background: blue;
   height: 200px;
   width: 60%;
   margin: 0 auto;
@@ -18,7 +18,7 @@ main {
 }
 
 main div {
-  background: black;
+  background: red;
   color: white;
   width: 50%;
   transform: translate(-50%, -50%);
