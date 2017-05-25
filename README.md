@@ -1,3 +1,5 @@
+<meta name="google-site-verification" content="dTa-K84ea0Ut5tJI_Q451wLN1bk7bVNlmZS0tqglMhM" />
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/abiglow/totalrecon/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
