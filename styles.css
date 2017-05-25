@@ -17,6 +17,7 @@ main {
 
 main div {
   background: black;
+  font-family: monospace;
   color: white;
   width: 50%;
   transform: translate(-50%, -50%);
