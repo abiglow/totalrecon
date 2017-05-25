@@ -1,12 +1,12 @@
 body {
-  background: #f06d06;
+  background: #000000;
   font-size: 80%;
   padding: 20px;
 }
 
 main {
   position: relative;
-  background: white;
+  background: black;
   height: 200px;
   width: 60%;
   margin: 0 auto;
