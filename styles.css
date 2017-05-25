@@ -1,6 +1,7 @@
 body {
   background: black;
-  font-size: 80%;
+  font-size: 20%;
+  font-family: monospace;
   padding: 20px;
 }
 
@@ -17,7 +18,6 @@ main {
 
 main div {
   background: black;
-  font-family: monospace;
   color: white;
   width: 50%;
   transform: translate(-50%, -50%);
