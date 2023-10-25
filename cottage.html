@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* Add your CSS styles here */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 15px;
+            border-radius: 5px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+
+        .date {
+            font-size: 12px;
+            color: #555;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+            <th>Last Updated</th>
+        </tr>
+        <tr>
+            <td>Milk:</td>
+            <td><input type="range" min="0" max="4" value="2" step="1" class="slider" id="milk"></td>
+            <td><p class="amount" id="milk_amount"></p></td>
+            <td><p class="date" id="milk_date"></p></td>
+        </tr>
+        <tr>
+            <td>Eggs:</td>
+            <td><input type="range" min="0" max="3" value="1" step="1" class="slider" id="eggs"></td>
+            <td><p class="amount" id="eggs_amount"></p></td>
+            <td><p class="date" id="eggs_date"></p></td>
+        </tr>
+        <tr>
+            <td>Butter:</td>
+            <td><input type="range" min="0" max="2" value="1" step="1" class="slider" id="butter"></td>
+            <td><p class="amount" id="butter_amount"></p></td>
+            <td><p class="date" id="butter_date"></p></td>
+        </tr>
+        <tr>
+            <td>Bread:</td>
+            <td><input type="range" min="0" max="4" value="2" step="1" class="slider" id="bread"></td>
+            <td><p class="amount" id="bread_amount"></p></td>
+            <td><p class="date" id="bread_date"></p></td>
+        </tr>
+        <tr>
+            <td>Water:</td>
+            <td><input type="range" min="0" max="3" value="1" step="1" class="slider" id="water"></td>
+            <td><p class="amount" id="water_amount"></p></td>
+            <td><p class="date" id="water_date"></p></td>
+        </tr>
+        <tr>
+            <td>Beer:</td>
+            <td><input type="range" min="0" max="200" value="100" step="1" class="slider" id="beer"></td>
+            <td><p class="amount" id="beer_amount"></p></td>
+            <td><p class="date" id="beer_date"></p></td>
+        </tr>
+        <tr>
+            <td>Liquor:</td>
+            <td><input type="range" min="0" max="3" value="1" step="1" class="slider" id="liquor"></td>
+            <td><p class="amount" id="liquor_amount"></p></td>
+            <td><p class="date" id="liquor_date"></p></td>
+        </tr>
+        <tr>
+            <td>Wine:</td>
+            <td><input type="range" min="0" max="10" value="5" step="1" class="slider" id="wine"></td>
+            <td><p class="amount" id="wine_amount"></p></td>
+            <td><p class="date" id="wine_date"></p></td>
+        </tr>
+    </table>
+</div>
+
+<script>
+    const items = ['milk', 'eggs', 'butter', 'bread', 'water', 'beer', 'liquor', 'wine'];
+    const amounts = {
+        milk: 'litres',
+        eggs: 'dozen',
+        butter: 'brick',
+        bread: 'loaves',
+        water: 'jugs',
+        beer: 'cans',
+        liquor: 'litres',
+        wine: 'bottles'
+    };
+
+    function formatDate(date) {
+        if (!date) {
+            return 'Never';
+        }
+        return new Date(date).toLocaleDateString();
+    }
+
+    items.forEach(item => {
+        const slider = document.getElementById(item);
+        const amountOutput = document.getElementById(item + '_amount');
+        const dateOutput = document.getElementById(item + '_date');
+
+        slider.oninput = function () {
+            const value = parseFloat(this.value);
+            const currentDate = new Date().toLocaleDateString(); // Extracting only the date part
+            amountOutput.innerHTML = value + ' ' + amounts[item];
+            dateOutput.innerHTML = 'Last Updated: ' + formatDate(currentDate);
+        }
+
+        // Set initial last updated to 'Never'
+        const initialValue = parseFloat(slider.value);
+        amountOutput.innerHTML = initialValue + ' ' + amounts[item];
+        dateOutput.innerHTML = 'Last Updated: Never';
+    });
+</script>
+
+</body>
+</html>
