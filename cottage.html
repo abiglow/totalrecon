@@ -145,7 +145,7 @@
 
         slider.oninput = function () {
             const value = parseFloat(this.value);
-            const currentDate = new Date().toLocaleDateString(); // Extracting only the date part
+            const currentDate = new Date().toISOString(); // Storing the full date format
             amountOutput.innerHTML = value + ' ' + amounts[item];
             dateOutput.innerHTML = 'Last Updated: ' + formatDate(currentDate);
             localStorage.setItem(item, value);
