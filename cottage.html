@@ -148,12 +148,22 @@
             const currentDate = new Date().toLocaleDateString(); // Extracting only the date part
             amountOutput.innerHTML = value + ' ' + amounts[item];
             dateOutput.innerHTML = 'Last Updated: ' + formatDate(currentDate);
+            localStorage.setItem(item, value);
+            localStorage.setItem(item + '_date', currentDate);
         }
 
-        // Set initial last updated to 'Never'
-        const initialValue = parseFloat(slider.value);
-        amountOutput.innerHTML = initialValue + ' ' + amounts[item];
-        dateOutput.innerHTML = 'Last Updated: Never';
+        // Set initial last updated and slider value from localStorage
+        const storedValue = localStorage.getItem(item);
+        const storedDate = localStorage.getItem(item + '_date');
+        if (storedValue) {
+            slider.value = storedValue;
+            amountOutput.innerHTML = storedValue + ' ' + amounts[item];
+            dateOutput.innerHTML = 'Last Updated: ' + formatDate(storedDate);
+        } else {
+            const initialValue = parseFloat(slider.value);
+            amountOutput.innerHTML = initialValue + ' ' + amounts[item];
+            dateOutput.innerHTML = 'Last Updated: Never';
+        }
     });
 </script>
 
